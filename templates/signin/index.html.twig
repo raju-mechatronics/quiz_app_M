@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block body %}
+
+
+        <form method="POST" >
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input required type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input  required type="text" name="fullName" class="form-control" id="name" placeholder="Your Name">
+            </div>
+            {% if (error) %}
+                <div class="text-danger">Something is Wrong with your info!</div>
+            {% endif %}
+            <br>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Set Your Question{% endblock %}
+
+{% block body %}
+
+    <form method="post">
+        <ol>
+            {% for i in 1..10 %}
+                <li>
+                    <input type="text" name="Q{{ i }}" class="form-control" value="Your Question?">
+
+                    <div class="form-check m-1 d-flex align-items-center">
+                        <input class="form-check-input" type="radio" checked value="Option 1" name="A{{ i }}">
+                        <label class="form-check-label mx-2">
+                            <input name="Q{{ i }}_Option_1" value="Option 1" class="form-control option-text"/>
+                        </label>
+                    </div>
+                    <div class="form-check m-1 d-flex align-items-center">
+                        <input class="form-check-input" type="radio" value="Option 2" name="A{{ i }}">
+                        <label class="form-check-label mx-2">
+                            <input name="Q{{ i }}_Option_2" value="Option 2" class="form-control option-text"/>
+                        </label>
+                    </div>
+                    <div class="form-check m-1 d-flex align-items-center">
+                        <input class="form-check-input" type="radio" value="Option 3" name="A{{ i }}">
+                        <label class="form-check-label mx-2">
+                            <input name="Q{{ i }}_Option_3" value="Option 3" class="form-control option-text"/>
+                        </label>
+                    </div>
+                    <div class="form-check m-1 d-flex align-items-center">
+                        <input class="form-check-input" type="radio" value="Option 4" name="A{{ i }}">
+                        <label class="form-check-label mx-2">
+                            <input name="Q{{ i }}_Option_4" value="Option 4" class="form-control option-text"/>
+                        </label>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+        <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+    <script>
+        let btn = document.querySelector("button");
+        let form = document.querySelector("form");
+        // btn.addEventListener("click", (e) => {
+        //     e.preventDefault();
+        //     const data = new FormData(form);
+        //
+        //     const value = Object.fromEntries(data.entries());
+        //
+        //     console.log({value});
+        // })
+
+        $("input.option-text").on("change", (e) => {
+            let optionText = e.target.value;
+            console.log(e.target.value);
+            $(e.target.parentElement.previousElementSibling).val(optionText);
+        })
+    </script>
+{% endblock %}

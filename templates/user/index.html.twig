@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    {% if newMember %}
+
+        <h5 class="text-success text-center">Welcome {{ user.getName() }}</h5>
+        <br>
+        <div class="text-center">
+            <a href="{{ path('app_question_form') }}">Add Question</a>
+        </div>
+
+    {% else %}
+        Sold-out!
+    {% endif %}
+
+{% endblock %}

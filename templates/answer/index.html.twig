@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnswerController!{% endblock %}
+
+{% block body %}
+
+    <p class="text-center">How much you know about <b>{{ questioner.getName() }}</b></p>
+    <form style="font-size: large" method="post">
+        <ol>
+            {% for index, question in questioner.getQuestions() %}
+                <li>
+                    {{ question.getQuestion() }}
+                    <br>
+                    {% for option in question.getOptions() %}
+                        <div class="form-check ">
+                            <input class="form-check-input" type="radio" value="{{ option.getChoiceText() }}"
+                                   name="Q{{ index+1 }}"
+                                   id="{{ option.getId() }}">
+                            <label class="form-check-label" for="{{ option.getId() }}">
+                                {{ option.getChoiceText() }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ol>
+        <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+{% endblock %}
